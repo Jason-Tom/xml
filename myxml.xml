@@ -1,0 +1,17 @@
+<myroot>
+    <the_one category="one">
+        <one>lalala</one>
+        <two>hahaha</two>
+        <three>gagaga</three>
+    </the_one>
+    <the_two category="two">
+        <one>lalala1</one>
+        <two>hahaha1</two>
+        <three>gagaga1</three>
+    </the_two>
+    <the_three category="three">
+        <one>lalala3</one>
+        <three>hahaha3</three>
+        <three>gagaga3</three>
+    </the_three>
+</myroot>

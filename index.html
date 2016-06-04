@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <!-- js文件不存在跨域问题，xml才有跨域问题，即便在自己浏览器也要实现本地文件的形式访问 -->
+    <script type="text/javascript" src="http://www.w3school.com.cn/example/xdom/loadxmldoc.js"></script>
+    <script type="text/javascript" src="http://http://www.g3-449.mom:81/json/loadxmldoc.js"></script>
+    <script type="text/javascript" src="loadxmldoc.js"></script>
+</head>
+
+<body>
+    <div>lalala</div>
+    <!-- xml文件要在服务器上面才能访问，file文件类型不能访问 -->
+    <script type="text/javascript">
+    xmlDoc = loadXMLDoc("xml_test.xml");
+    x = xmlDoc.getElementsByTagName("title");
+    document.write(x[2].childNodes[0].nodeValue);
+    </script>
+</body>
+
+</html>

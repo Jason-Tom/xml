@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>xml</title>
+</head>
+
+<body>
+    <bookstore>
+        <book category="CHILDREN">
+            <title>Harry Potter</title>
+            <author>J K. Rowling</author>
+            <year>2005</year>
+            <price>29.99</price>
+        </book>
+        <book category="WEB">
+            <title>Learning XML</title>
+            <author>Erik T. Ray</author>
+            <year>2003</year>
+            <price>39.95</price>
+        </book>
+    </bookstore>
+    <script type="text/javascript">
+    var a = document.getElementsByTagName('title');
+    console.log(a[1].valueOf());
+    </script>
+</body>
+
+</html>

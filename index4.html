@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>myxml_test</title>
+    <script type="text/javascript" src="loadxmldoc.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var _result = loadXMLDoc('myxml.xml');
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('one');
+    // 获取文本元素值
+    console.log(x[0].childNodes[0].nodeValue);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('the_one');
+    // 获取元素只，不能多层嵌套childNpdes
+    // console.log(x[0].childNodes[0].childNodes[0].nodeValue);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('one');
+    // 遍历同种标签元素
+    var i = 0;
+    for (i = 0; i < x.length; i++) {
+        console.log(x[i].childNodes[0].nodeValue);
+    }
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('the_two');
+    // 获取文本属性值
+    console.log(x[0].attributes);
+    console.log(x[0].getAttribute("category"));
+    console.log(x[0].getAttributeNode("category"));
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('one');
+    // 改变文本元素值
+    x[0].childNodes[0].nodeValue = 'lalala';
+    console.log(x[0].childNodes[0].nodeValue);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('the_two');
+    // 改变元素属性,要先通过对象属性获取值
+    x[0].getAttributeNode("category").nodeValue = 'hahaha';
+    console.log(x[0].getAttributeNode("category"));
+    console.log('--------------------------');
+    y = _result.getElementsByTagName("the_three")[0];
+    console.log(y.nodeName);
+    console.log(y.nodeValue);
+    console.log(y.attributes);
+    y.parentNode.removeChild(y);
+    console.log(y.nodeName);
+    console.log(y.nodeValue);
+    console.log(y.attributes);
+    console.log('--------------------------');
+    // 移除文本内容
+    // 实际文件内容没有改变
+    // y = _result.getElementsByTagName("one")[1];
+    // console.log(y.childNodes[0]);
+    // x = y.childNodes[0];
+    // y.removeChild(x);
+    // console.log(y.childNodes[0]);
+    // 清空文本节点
+    // y = _result.getElementsByTagName("one")[1];
+    // console.log(y.childNodes[0].nodeValue);
+    // y.childNodes[0].nodeValue='';
+    // console.log(y.childNodes[0].nodeValue);
+    // 根据名称删除属性节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // x = xmlDoc.getElementsByTagName('the_three');
+    // document.write(x[0].getAttribute('category'));
+    // document.write("<br />");
+    // x[0].removeAttribute('category');
+    // document.write(x[0].getAttribute('category'));
+    // 根据对象删除节点
+
+    // 替换元素节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // x = xmlDoc.documentElement;
+    // //创建一个 book 元素、一个 title 元素，以及一个 text 节点
+    // newNode = xmlDoc.createElement("book");
+    // newTitle = xmlDoc.createElement("three");
+    // newText = xmlDoc.createTextNode("Hello World");
+    // //向 three 节点添加文本节点
+    // newTitle.appendChild(newText);
+    // //向 book 节点添加 three 节点
+    // newNode.appendChild(newTitle);
+    // y = xmlDoc.getElementsByTagName("the_three")[0];
+    // //用这个新节点替换第一个 book 节点
+    // x.replaceChild(newNode, y);
+    // z = xmlDoc.getElementsByTagName("three");
+    // for (i = 0; i < z.length; i++) {
+    //     document.write(z[i].childNodes[0].nodeValue);
+    //     document.write("<br />");
+    // }
+
+    // 替换文本节点中的数据
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // var x = xmlDoc.getElementsByTagName("three")[0].childNodes[0];
+    // document.write(x.nodeValue);
+    // x.replaceData(1, 12, "Hello");
+    // document.write("<br />");
+    // document.write(x.nodeValue);
+
+    // 使用 nodeValue 属性替换文本节点中的数据 没有上一种灵活，但是简单
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // x = xmlDoc.getElementsByTagName("one")[0].childNodes[0];
+    // document.write(x.nodeValue);
+    // x.nodeValue = "Hello World";
+    // document.write("<br />");
+    // document.write(x.nodeValue);
+
+    // 创建元素节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // newel = xmlDoc.createElement("edition");
+    // x = xmlDoc.getElementsByTagName("one")[0];
+    // x.appendChild(newel);
+    // document.write(x.getElementsByTagName("edition")[0].nodeName);
+
+    // 创建属性节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // newatt = xmlDoc.createAttribute("edition");
+    // newatt.nodeValue = "first";
+    // x = xmlDoc.getElementsByTagName("one");
+    // x[0].setAttributeNode(newatt);
+    // document.write("Edition: ");
+    // document.write(x[0].getAttribute("edition"));
+
+    // 通过方法创建属性节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // x = xmlDoc.getElementsByTagName("one");
+    // x[0].setAttribute("edition", "first");
+    // document.write("Edition: ");
+    // document.write(x[0].getAttribute("edition"));
+
+    // 创建文本节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // newel = xmlDoc.createElement("edition");
+    // newtext = xmlDoc.createTextNode("first");
+    // newel.appendChild(newtext);
+    // x = xmlDoc.getElementsByTagName("the_one")[0];
+    // x.appendChild(newel);
+    // document.write(x.getElementsByTagName("one")[0].childNodes[0].nodeValue);
+    // document.write(" - Edition: ");
+    // document.write(x.getElementsByTagName("edition")[0].childNodes[0].nodeValue);
+
+    // 创建注释节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // newComment = xmlDoc.createComment("Revised March 2008");
+    // x = xmlDoc.getElementsByTagName("myroot")[0];
+    // x.appendChild(newComment);
+    // document.write(x.lastChild.nodeValue);
+
+    // 添加节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // newel = xmlDoc.createElement("edition");
+    // x = xmlDoc.getElementsByTagName("one")[0];
+    // x.appendChild(newel);
+    // document.write(x.getElementsByTagName("edition")[0].nodeName);
+
+    // 插入节点
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // newNode = xmlDoc.createElement("the_one");
+    // x = xmlDoc.documentElement;
+    // y = xmlDoc.getElementsByTagName("the_one");
+    // document.write("the_one elements before: " + y.length);
+    // document.write("<br />");
+    // x.insertBefore(newNode, y[3]);
+    // y = xmlDoc.getElementsByTagName("the_one");
+    // document.write("Book elements after: " + y.length);
+
+    // 添加新属性
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // x = xmlDoc.getElementsByTagName("one");
+    // x[0].setAttribute("edition", "first");
+    // document.write("Edition: ");
+    // document.write(x[0].getAttribute("edition"));
+
+    // 添加新文本
+    // xmlDoc = loadXMLDoc("myxml.xml");
+    // var x = xmlDoc.getElementsByTagName("one")[0].childNodes[0];
+    // document.write(x.nodeValue);
+    // x.insertData(3, "Hello ");
+    // document.write("<br />");
+    // document.write(x.nodeValue);
+
+    // 克隆节点
+    xmlDoc = loadXMLDoc("myxml.xml");
+    x = xmlDoc.getElementsByTagName('one')[0];
+    cloneNode = x.cloneNode(true);
+    xmlDoc.documentElement.appendChild(cloneNode);
+    y = xmlDoc.getElementsByTagName("one");
+    for (i = 0; i < y.length; i++) {
+        document.write(y[i].childNodes[0].nodeValue);
+        document.write("<br />");
+    }
+    </script>
+</body>
+
+</html>

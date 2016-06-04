@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>myxml_test</title>
+    <script type="text/javascript" src="loadxmldoc.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var _result = loadXMLDoc('myxml.xml');
+    x = _result.getElementsByTagName('the_one');
+    var i = 1;
+    for (i = 1; i <= x.length; i++) {
+        console.log(x[i - 1].nodeValue);
+        console.log(x[i - 1].nodeName);
+        console.log(x[i - 1].parentNode);
+        // 会返回数组对象数组
+        console.log(x[i - 1].childNodes);
+        console.log(x[i - 1].attributes);
+        console.log(x[i - 1].nodeType);
+    }
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('the_one');
+    console.log(x[0].nodeValue);
+    console.log(x[0].nodeName);
+    // 父节点会包括属性
+    console.log(x[0].parentNode);
+    // 子元素有多个通过index指定，
+    console.log(x[0].childNodes[0].nodeName);
+    console.log(x[0].attributes);
+    console.log(x[0].nodeType);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('one');
+    console.log(x[0].nodeValue);
+    console.log(x[0].nodeName);
+    // 父节点会包括属性
+    console.log(x[0].parentNode);
+    // 子元素有多个通过index指定，
+    console.log(x[0].childNodes[0]);
+    console.log(x[0].attributes);
+    console.log(x[0].nodeType);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('one');
+    console.log(x[1].nodeValue);
+    console.log(x[1].nodeName);
+    // 父节点会包括属性
+    console.log(x[1].parentNode);
+    // 子元素有多个通过index指定，
+    console.log(x[1].childNodes[0]);
+    console.log(x[1].attributes);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('one');
+    console.log(x[0].nodeValue);
+    console.log(x[0].nodeName);
+    // 父节点会包括属性
+    console.log(x[0].parentNode);
+    // 子元素有多个通过index指定，
+    console.log(x[0].childNodes[0]);
+    console.log(x[0].attributes);
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('the_one');
+    console.log(x[0].nodeType);
+    // 列表长度对应的是数组对象，还要注意索引对应
+    console.log(x.length);
+    console.log('--------------------------');
+    var _result = loadXMLDoc('myxml.xml');
+    x = _result.getElementsByTagName('the_one');
+    var i = 1;
+    for (i = 1; i <= x.length; i++) {
+        console.log(i);
+        console.log(x[i - 1].nodeName);
+        console.log(x[i - 1].attributes);
+        // console.log(x[i - 1].childNodes[0].childNodes[0].nodeValue+'lalala');
+    }
+    console.log('--------------------------');
+    var _result = loadXMLDoc('myxml.xml');
+    x = _result.getElementsByTagName('one');
+    var i = 1;
+    for (i = 1; i <= x.length; i++) {
+        console.log(i);
+        console.log(x[i - 1].nodeName);
+        console.log(x[i - 1].attributes);
+        console.log(x[i - 1].childNodes[0].nodeValue);
+    }
+    console.log('--------------------------');
+    var _result = loadXMLDoc('myxml.xml');
+    x = _result.getElementsByTagName('the_one');
+    var i = 1;
+    for (i = 1; i <= x.length; i++) {
+        console.log(i+'lalala');
+        console.log(x[i - 1].childNodes[0].nodeType);
+        console.log(x[i - 1].childNodes[0].nodeName);
+        console.log(x[i - 1].childNodes[0].nodeValue);
+        console.log(x[i - 1].attributes);
+        // console.log(x[i - 1].childNodes[0].nodeValue);
+    }
+    console.log('--------------------------');
+    text = "<book>";
+    text = text + "<title>Harry Potter</title>";
+    text = text + "<author>J K. Rowling</author>";
+    text = text + "<year>2005</year>";
+    text = text + "</book>";
+    xmlDoc = loadXMLString(text);
+    x = xmlDoc.documentElement.childNodes;
+    for (i = 0; i < x.length; i++) {
+        document.write(x[i].nodeName);
+        document.write(": ");
+        document.write(x[i].childNodes[0].nodeValue);
+        document.write("<br />");
+    }
+    console.log('--------------------------');
+    x = _result.getElementsByTagName('the_two');
+    // 返回父节点，包括属性
+    console.log(x[0].parentNode);
+    // 返回数组对象，包括各个成员
+    console.log(x[0].childNodes);
+    console.log(x[0].firstChild.nodeName);
+    console.log(x[0].lastChild.nodeName);
+    </script>
+</body>
+
+</html>
