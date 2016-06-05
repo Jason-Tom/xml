@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <!-- 服务器文件名可以使用中文，但是做好别用 -->
     <script type="text/javascript">
     var xmlhttp;
 
@@ -12,6 +13,7 @@
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         if (xmlhttp != null) {
+            // 用于检测函数，检测是否连通，连通才执行相应操作，每一次readyState变化都会执行一次该函数
             xmlhttp.onreadystatechange = state_Change;
             xmlhttp.open("GET", url, true);
             xmlhttp.send(null);
@@ -26,6 +28,11 @@
                 document.getElementById('A1').innerHTML = xmlhttp.status;
                 document.getElementById('A2').innerHTML = xmlhttp.statusText;
                 document.getElementById('A3').innerHTML = xmlhttp.responseText;
+                var x = xmlhttp.responseXML.documentElement.getElementsByTagName("to");
+                xx = x[0].firstChild.nodeValue;
+                // 读取xml文件内容，先通过responseXML加载xml文件，然后通过xml dom操作xml文件
+                document.getElementById('A4').innerHTML = xmlhttp.responseXML.documentElement.getElementsByTagName("to")[0].firstChild.nodeValue;
+                // document.getElementById('A5').innerHTML = xmlhttp.responseXML.documentElement.getElementsByTagName("la")[0].firstChild.nodeValue;
             } else {
                 alert("Problem retrieving XML data:" + xmlhttp.statusText);
             }
@@ -45,7 +52,18 @@
     <p><b>Response:</b>
         <br /><span id="A3"></span>
     </p>
-    <button onclick="loadXMLDoc('/example/xdom/note.xml')">Get XML</button>
+    <p><b>Response_xml:</b>
+        <br /><span id="A4"></span>
+    </p>
+    <p><b>Response_la:</b>
+        <br /><span id="A5"></span>
+    </p>
+    <!-- 跨域访问其他服务器上面的xml问就爱你不行 -->
+    <!-- <button onclick="loadXMLDoc('http://www.w3school.com.cn/example/xdom/note.xml')">Get XML</button> -->
+    <!-- 自己服务器上面的xml文件能访问 -->
+    <button onclick="loadXMLDoc('http://www.g3-449.mom:81/json/note.xml?la=lalala')">Get XML</button>
+    <!-- 还能转换成本地文件形式来访问 -->
+    <!-- <button onclick="loadXMLDoc('note.xml')">Get XML</button> -->
 </body>
 
 </html>
